@@ -1,6 +1,6 @@
 import React from "react";
 
-type Mode = "dark" | "light";
+export type Mode = "dark" | "light";
 
 type AppState = {
   mode: Mode;
@@ -9,18 +9,23 @@ type AppState = {
 const initialState: AppState = {
   mode: localStorage.getItem("mode")
     ? (localStorage.getItem("mode") as Mode)
-    : "light",
+    : window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light",
 };
 
 type Action = { type: "SWITCH_MODE" };
 
 function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
-    case "SWITCH_MODE":
+    case "SWITCH_MODE": {
+      const m = state.mode === "light" ? "dark" : "light";
+      localStorage.setItem("mode", m);
       return {
         ...state,
-        mode: state.mode === "light" ? "dark" : "light",
+        mode: m,
       };
+    }
     default:
       return state;
   }

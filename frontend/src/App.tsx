@@ -1,6 +1,19 @@
-import { useStore } from "./store";
+import { Link, Box, Container, Toolbar, Typography } from "@mui/material";
+import { Outlet } from "react-router-dom";
+import TopBar from "./components/topbar";
 
 export default function App() {
-  const { state, dispatch } = useStore();
-  return <div>{state.mode}</div>;
+  return (
+    <>
+      <TopBar />
+      <Box>
+        <Container>
+          <Toolbar disableGutters>
+            <Typography sx={{ color: "text.primary" }}>H</Typography>
+          </Toolbar>
+        </Container>
+      </Box>
+      <Outlet />
+    </>
+  );
 }
