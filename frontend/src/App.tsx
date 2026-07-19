@@ -1,3 +1,6 @@
+import { useStore } from "./store";
+
 export default function App() {
-  return <div>Hi</div>;
+  const { state, dispatch } = useStore();
+  return <div>{state.mode}</div>;
 }
