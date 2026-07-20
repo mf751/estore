@@ -16,6 +16,13 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<HomePage />} />
+      <Route path="laptops" element={<h1>h</h1>} />
+      <Route path="pc" element={<HomePage />} />
+      <Route path="networkdevices" element={<HomePage />} />
+      <Route path="printers_scanners" element={<HomePage />} />
+      <Route path="pc_parts" element={<HomePage />} />
+      <Route path="others" element={<HomePage />} />
+      <Route path="repairs" element={<HomePage />} />
     </Route>,
   ),
 );
